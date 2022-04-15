@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from .models import Note
+from .serializers import NoteSerializer
 
 # Create your views here. Our query endpoints: GET, POST, PUT, DELETE
 
@@ -42,4 +44,8 @@ def getRoutes(request):
 
 @api_view(['GET'])
 def getNotes(request):
-    return Response('NOTES')
+    notes = Note.objects.all()
+    serializer = NoteSerializer(notes, many=True)
+    return Response(serializer.data)
+
+
