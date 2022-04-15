@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
 # Create your views here. Our query endpoints: GET, POST, PUT, DELETE
 
+@api_view(['GET'])
 def getRoutes(request):
     routes = [
         {
@@ -36,5 +38,8 @@ def getRoutes(request):
             'description': 'Deletes and exiting note'
         },
     ]
+    return Response(routes)
 
-    return JsonResponse(routes, safe=False)
+@api_view(['GET'])
+def getNotes(request):
+    return Response('NOTES')
