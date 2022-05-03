@@ -20,7 +20,7 @@ function App() {
                   {/* <Header /> */}
                   {/* <Route path="/" element={<Header />} />  */}
                   <Route path="/" element={<NotesListPage />} />
-                  <Route path="/note/:id" element={<NotePage />} />
+                  <Route path="/notes/:id" element={<NotePage />} />
               </Route>
             </Routes>
         </div>
