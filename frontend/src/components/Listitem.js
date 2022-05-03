@@ -5,7 +5,7 @@ const ListItem = (props) => {
 
     return(
         <div>
-            <h3>{note.body}</h3>
+            <h3>{ note.body }</h3>
         </div>
     )
 }
