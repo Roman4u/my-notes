@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
+import { ReactComponent as ArrowLeft } from '../assests/arrow-left.svg';
+import { Link } from "react-router-dom";
 
 const NotePage = (props) => {
     let { id } = useParams();
@@ -22,12 +23,20 @@ const NotePage = (props) => {
     };
 
     return(
-        <div>
+        <div className="note" >
             {/* <button onClick={() => { 
                 navigate('/')
             }}>click</button> */}
             {/* <h1>NOTE HERE {id} </h1> */}
-            <p>{note?.body}</p>
+            <div className="note-header">
+                <h3>
+                    <Link to="/">
+                        <ArrowLeft />
+                    </Link>
+                </h3>
+
+            </div>
+            <textarea defaultValue={note?.body} ></textarea>
         </div>
     )
 }
