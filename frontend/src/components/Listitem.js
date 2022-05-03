@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ListItem = (props) => {
     const { note } = props; 
 
     return(
-        <div>
+        <Link to={`/notes/${note.id}`}>
             <h3>{ note.body }</h3>
-        </div>
+        </Link>
     )
 }
 

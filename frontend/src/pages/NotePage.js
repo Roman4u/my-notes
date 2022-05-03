@@ -13,14 +13,9 @@ const NotePage = (props) => {
 
     let getNote = async () => {
         let response = await fetch(`/api/notes/${id}`)
-        // .then((res) => {
-        //     console.log(res.body.json);
-        // });
-        console.log('response:', response);
         let data = await response.json();
-        console.log('data:', data);
         setNote(data);
-    }
+    };
     
     const display = () => {
         console.log("it worked!");

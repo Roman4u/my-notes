@@ -12,8 +12,8 @@ function App() {
    
   return (
     <Router>
-      <div className="App">
-        <div> 
+      <div className="container dark">
+        <div className='app'> 
           <Header />
             <Routes>
               <Route>
