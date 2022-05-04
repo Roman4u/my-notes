@@ -18,7 +18,7 @@ const NotePage = (props) => {
         setNote(data);
     };
 
-    const updateNote = () => {
+    const updateNote = async () => {
         fetch(`/api/notes/${id}/update`, {
             method: "PUT",
             headers: {
@@ -27,9 +27,17 @@ const NotePage = (props) => {
             body: JSON.stringify(note)
         })
     };
+
+    const deleteNote = async () => {
+        fetch(`/api/notes/${id}/delete`, {
+            method: 'DELETE',
+            'headers': {
+                'Content-Type': 'application/json'
+            }
+        })
+    }
     
     const handleSubmit = () => {
-        console.log("note:", note);
         updateNote();
     };
 
@@ -42,6 +50,10 @@ const NotePage = (props) => {
                         navigate('/')}
                         } />
                 </h3>
+                <button onClick={() => {
+                        deleteNote();
+                        navigate('/')
+                    }}>Delete</button>
             </div>
 
             <textarea onChange={(e) => {
