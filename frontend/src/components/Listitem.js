@@ -7,7 +7,7 @@ const ListItem = (props) => {
     return(
         <Link to={`/notes/${note.id}`}>
             <div className="notes-list-item">
-                <h3>{ note.body }</h3>
+                <h3>{note.body} </h3>
             </div>    
         </Link>
     )
