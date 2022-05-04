@@ -9,10 +9,14 @@ const NotePage = (props) => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        console.log("id");
         getNote();
     }, [id]);
 
     const getNote = async () => {
+        console.log(id);
+        if(id === 'new') return;
+
         let response = await fetch(`/api/notes/${id}`)
         let data = await response.json();
         setNote(data);
@@ -41,6 +45,7 @@ const NotePage = (props) => {
         updateNote();
     };
 
+
     return(
         <div className="note" >
             <div className="note-header">
@@ -50,10 +55,16 @@ const NotePage = (props) => {
                         navigate('/')}
                         } />
                 </h3>
-                <button onClick={() => {
+                {id !== 'new' ?  (
+                        <button onClick={() => {
                         deleteNote();
                         navigate('/')
-                    }}>Delete</button>
+                        }}>Delete</button>
+                    ) : (
+                        <button onClick={() => {
+                        navigate('/')
+                        }}>Done</button>    
+                 )}      
             </div>
 
             <textarea onChange={(e) => {
