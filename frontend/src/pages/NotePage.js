@@ -22,6 +22,17 @@ const NotePage = (props) => {
         setNote(data);
     };
 
+    const createNote = async () => {
+        fetch('/api/notes/create', {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(note)
+        })
+        console.log("create note initiated");
+    }
+
     const updateNote = async () => {
         fetch(`/api/notes/${id}/update`, {
             method: "PUT",
@@ -42,7 +53,13 @@ const NotePage = (props) => {
     }
     
     const handleSubmit = () => {
-        updateNote();
+        if(id !== 'new' && !note.body){
+            deleteNote();
+        }else if(id !== 'new'){
+            updateNote();
+        }else if(id === 'new' && note !== null){
+            createNote();
+        }   
     };
 
 
@@ -57,11 +74,12 @@ const NotePage = (props) => {
                 </h3>
                 {id !== 'new' ?  (
                         <button onClick={() => {
-                        deleteNote();
+                        handleSubmit();
                         navigate('/')
                         }}>Delete</button>
                     ) : (
                         <button onClick={() => {
+                        handleSubmit();
                         navigate('/')
                         }}>Done</button>    
                  )}      

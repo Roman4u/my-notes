@@ -42,6 +42,7 @@ def getRoutes(request):
     ]
     return Response(routes)
 
+
 @api_view(['GET'])
 def getNotes(request):
     notes = Note.objects.all().order_by('-updated')
@@ -54,6 +55,21 @@ def getNote(request, pk):
     notes = Note.objects.get(id=pk)
     # the individual note object that is retrieved is than passed into the serializer
     serializer = NoteSerializer(notes, many=False)
+    return Response(serializer.data)
+
+@api_view(['PUT'])
+def createNote(request):
+    print("working")
+    # get the data
+    data = request.data
+    # create a note object using the data 
+    # and store it in a variable called 'note'
+    note = Note.objects.create(
+        # 'body' references the assigned attribute in 'models.py'
+        body=data['body']
+    )
+    # serialize the note object in case the frontend needs it
+    serializer = NoteSerializer(note, many=False)
     return Response(serializer.data)
 
 @api_view(['PUT'])
