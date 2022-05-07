@@ -74,7 +74,7 @@ const NotePage = (props) => {
                 </h3>
                 {id !== 'new' ?  (
                         <button onClick={() => {
-                        handleSubmit();
+                        deleteNote();
                         navigate('/')
                         }}>Delete</button>
                     ) : (
