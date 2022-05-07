@@ -53,7 +53,11 @@ const NotePage = (props) => {
     }
     
     const handleSubmit = () => {
-        if(id !== 'new' && !note.body){
+        console.log("note:", note);
+        if(id !== 'new' && note.body === ''){
+            // this logic checks for when the content of note.body has 
+            // been manually deleted; i.e. not using the provided 
+            // delete button
             deleteNote();
         }else if(id !== 'new'){
             updateNote();
