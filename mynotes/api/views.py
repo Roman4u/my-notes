@@ -59,7 +59,6 @@ def getNote(request, pk):
 
 @api_view(['PUT'])
 def createNote(request):
-    print("working")
     # get the data
     data = request.data
     # create a note object using the data 

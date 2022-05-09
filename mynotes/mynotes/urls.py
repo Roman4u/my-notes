@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
 
 # this connects our django mynotes app to our api. 
 # it's setting the root of our url
 # it then goes to the api urls folder and add notes as the second argument for our url
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('api.urls'))
+    path('api/', include('api.urls')),
+    path('', TemplateView.as_view(template_name='index.html')),
 ]
