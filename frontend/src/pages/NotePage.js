@@ -14,7 +14,7 @@ const NotePage = (props) => {
     }, [id]);
 
     const getNote = async () => {
-        console.log(id);
+        
         if(id === 'new') return;
 
         let response = await fetch(`/api/notes/${id}`)
