@@ -15,7 +15,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+print("base dir", BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -63,7 +63,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'frontend/build')
+            os.path.join(BASE_DIR, '../frontend/build')
             # BASE_DIR / 'frontend/build'
         ],
         'APP_DIRS': True,
@@ -129,8 +129,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, '/frontend/build/static')
-    # BASE_DIR / "static",'frontend/build/static'
+    # 
+    os.path.join(BASE_DIR, '../frontend/build/static')
 ]
 
 # Default primary key field type
